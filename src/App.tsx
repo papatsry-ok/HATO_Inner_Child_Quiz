@@ -381,6 +381,7 @@ const characters = [
 
 function App() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [answer, setAnswer] = useState<Record<string, number>>({});
   const [scores, setScores] = useState<Record<string, number>>({
     nurturer: 0,
     protector: 0,
@@ -405,6 +406,11 @@ function App() {
       newScores[key] = (newScores[key] || 0) + value;
     });
     setScores(newScores);
+    setAnswer((a) => ({
+      ...a,
+      ["q" + (currentQuestion + 1)]:
+        questions[currentQuestion].answers.indexOf(answer) + 1,
+    }));
 
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
@@ -416,6 +422,17 @@ function App() {
   const handlePersonalInfoSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setShowPersonalInfo(false);
+    const submitUrl = "https://hato-quiz-backend.deno.dev";
+    navigator.sendBeacon(
+      submitUrl,
+      new URLSearchParams({
+        ...answer,
+        name: personalInfo.name,
+        email: personalInfo.email,
+        age: personalInfo.age,
+        message: personalInfo.message,
+      })
+    );
     setShowResults(true);
   };
 
