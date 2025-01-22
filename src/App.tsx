@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Heart, Shield, Bird, Ear, ChevronFirst as FirstAid, Sun } from 'lucide-react';
+import { Heart, Shield, Bird, Ear, ChevronFirst as FirstAid, Sun, Weight } from 'lucide-react';
 import home from '../asset/Home.png';
 import q1 from '../asset/Question1.png';
 import q2 from '../asset/Question2.png';
@@ -350,7 +350,8 @@ function App() {
             <button
               key={index}
               onClick={() => handleAnswer(answer)}
-              className="w-full text-left py-2 px-3 rounded-[50.00px] bg-pink-50 hover:bg-pink-100 transition-colors text-sm text-[#433C2F]"
+              style={{ textAlign: 'center', fontWeight: 500 }} 
+              className="w-full text-left py-2 px-3 rounded-[50.00px] bg-pink-50 hover:bg-pink-100 transition-colors text-sm font-bold text-[#6F5557]"
             >
               {answer.text}
             </button>
