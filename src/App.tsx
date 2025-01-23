@@ -14,7 +14,7 @@ import light from "../asset/resultLightGiver.png";
 import listen from "../asset/resultListener.png";
 import nurtu from "../asset/resultNurturer.png";
 import protect from "../asset/resultProtector.png";
-import html2canvas from "html2canvas";
+import footer from "../asset/resultFooter.png";
 import { MdOutlineSaveAlt } from "react-icons/md";
 
 interface Question {
@@ -574,10 +574,42 @@ function App() {
 
     const handleSaveImage = () => {
       const screenElement = document.getElementById("results-screen");
+      const renderCanvas = async () => {
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d")!;
+        const image = new Image();
+        await new Promise((resolve, reject) => {
+          image.onload = resolve;
+          image.onerror = reject;
+          image.src = topCharacter.img;
+        });
+        canvas.width = image.width;
+        canvas.height = image.height;
+        context.drawImage(image, 0, 0);
+
+        context.font = "120px Mitr, sans-serif";
+        context.textAlign = "center";
+        context.textBaseline = "top";
+        context.lineWidth = 16;
+        context.strokeStyle = "#9D7676";
+        const nameY = canvas.height * 0.42;
+        context.strokeText(personalInfo.name, canvas.width / 2, nameY);
+        context.fillStyle = "#FFFFFF";
+        context.fillText(personalInfo.name, canvas.width / 2, nameY);
+
+        const footerImage = new Image();
+        await new Promise((resolve, reject) => {
+          footerImage.onload = resolve;
+          footerImage.onerror = reject;
+          footerImage.src = footer;
+        });
+        const footerHeight = (footerImage.height / footerImage.width) * canvas.width;
+        context.drawImage(footerImage, 0, canvas.height - footerHeight, canvas.width, footerHeight);
+
+        return canvas;
+      }
       if (screenElement) {
-        html2canvas(screenElement, {
-          ignoreElements: (element) => element.classList.contains("ignore-screenshot"),
-        }).then((canvas) => {
+        renderCanvas().then((canvas) => {
           const link = document.createElement("a");
           link.download = "results-screenshot.png";
           link.href = canvas.toDataURL();
