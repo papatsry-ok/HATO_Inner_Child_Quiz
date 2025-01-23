@@ -14,6 +14,8 @@ import light from "../asset/resultLightGiver.png";
 import listen from "../asset/resultListener.png";
 import nurtu from "../asset/resultNurturer.png";
 import protect from "../asset/resultProtector.png";
+import html2canvas from "html2canvas";
+import { MdOutlineSaveAlt } from "react-icons/md";
 
 interface Question {
   image: string;
@@ -570,13 +572,36 @@ function App() {
   if (showResults) {
     const topCharacter = getTopCharacters()[0];
 
+    const handleSaveImage = () => {
+      const screenElement = document.getElementById("results-screen");
+      if (screenElement) {
+        html2canvas(screenElement, {
+          ignoreElements: (element) => element.classList.contains("ignore-screenshot"),
+        }).then((canvas) => {
+          const link = document.createElement("a");
+          link.download = "results-screenshot.png";
+          link.href = canvas.toDataURL();
+          link.click();
+        });
+      }
+    };
+  
     return (
       <div
+        id="results-screen"
         className="w-[375px] h-[667px] bg-cover bg-center p-4 overflow-hidden"
         style={{
           backgroundImage: `url(${topCharacter.img})`,
         }}
       >
+        <button
+          onClick={handleSaveImage}
+          className="ignore-screenshot absolute top-4 left-4 text-[#B08BD2] py-1.5 px-2 mt-1 ml-1 rounded-[5px]"
+          style={{ zIndex: 1000 }}
+        >
+          <MdOutlineSaveAlt size={24} />
+        </button>
+  
         <div
           className="max-w-md mx-auto p-6 relative"
           style={{ position: "relative", top: "14.5rem" }}
@@ -596,7 +621,7 @@ function App() {
             >
               {personalInfo.name}
             </p>
-
+  
             <p
               style={{
                 fontFamily: "Mitr, sans-serif",
@@ -617,7 +642,7 @@ function App() {
                 @hato.land
               </a>
             </p>
-
+  
             <div
               style={{
                 display: "flex",
