@@ -592,7 +592,7 @@ function App() {
         context.textBaseline = "top";
         context.lineWidth = 16;
         context.strokeStyle = "#9D7676";
-        const nameY = canvas.height * 0.42;
+        const nameY = canvas.height * 0.41;
         context.strokeText(personalInfo.name, canvas.width / 2, nameY);
         context.fillStyle = "#FFFFFF";
         context.fillText(personalInfo.name, canvas.width / 2, nameY);
