@@ -119,23 +119,6 @@ function App() {
     message: ''
   });
 
-  useEffect(() => {
-    const preventPullToRefresh = (e: TouchEvent) => {
-      // Disable pull-to-refresh only when on the first page (showStart is true)
-      if (showStart && window.scrollY === 0) {
-        e.preventDefault();
-      }
-    };
-
-    // Add the event listener
-    document.addEventListener("touchmove", preventPullToRefresh, { passive: false });
-
-    // Cleanup on unmount
-    return () => {
-      document.removeEventListener("touchmove", preventPullToRefresh);
-    };
-  }, [showStart]);
-
   const handleAnswer = (answer: typeof questions[0]['answers'][0]) => {
     const newScores = { ...scores };
     Object.entries(answer.scores).forEach(([key, value]) => {
