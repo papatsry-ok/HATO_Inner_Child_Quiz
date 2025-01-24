@@ -475,7 +475,7 @@ function App() {
           <form onSubmit={handlePersonalInfoSubmit} className="space-y-3">
             <div>
               <label className="block text-xs font-medium text-gray-600 mb-1">
-                ชื่อเล่น
+                ชื่อ/นามแฝง
               </label>
               <input
                 type="text"
@@ -484,7 +484,6 @@ function App() {
                   setPersonalInfo({ ...personalInfo, name: e.target.value })
                 }
                 className="w-full py-1 px-3 rounded-[50.00px] bg-pink-50 border border-pink-100 focus:outline-none focus:ring-2 focus:ring-pink-200 text-xs text-gray-600"
-                required
               />
             </div>
 
