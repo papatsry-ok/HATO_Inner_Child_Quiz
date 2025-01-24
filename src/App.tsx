@@ -463,19 +463,16 @@ function App() {
   if (showPersonalInfo) {
     return (
       <div
-        className="min-h-screen bg-cover bg-center p-4"
+        className="min-h-screen bg-cover bg-center p-4 flex items-center pt-[40vh]"
         style={{
           backgroundImage: `url(${info})`,
         }}
       >
-        <div
-          className="max-w-md mx-auto p-8 relative"
-          style={{ marginTop: "16rem" }}
-        >
+        <div className="max-w-md mx-auto p-8 relative">
           <form onSubmit={handlePersonalInfoSubmit} className="space-y-3">
             <div>
-              <label className="block text-xs font-medium text-gray-600 mb-1">
-                ชื่อ/นามแฝง
+              <label className="block text font-medium text-gray-600 mb-1">
+                ชื่อ
               </label>
               <input
                 type="text"
@@ -485,18 +482,21 @@ function App() {
                 }
                 className="w-full py-1 px-3 rounded-[50.00px] bg-pink-50 border border-pink-100 focus:outline-none focus:ring-2 focus:ring-pink-200 text-xs text-gray-600"
               />
+              <p className="text-xs text-gray-500 mt-2">
+                *ใช้แสดงในคำตอบเท่านั้น ไม่มีการเก็บบันทึกใดๆ
+              </p>
             </div>
 
             {/* <div>
-              <label className="block text-xs font-medium text-gray-600 mb-1">Email</label> 
+              <label className="block text-xs font-medium text-gray-600 mb-1">Email</label>
               <input
                 type="email"
                 value={personalInfo.email}
                 onChange={(e) => setPersonalInfo({ ...personalInfo, email: e.target.value })}
-                className="w-full py-1 px-3 rounded-[50.00px] bg-pink-50 border border-pink-100 focus:outline-none focus:ring-2 focus:ring-pink-200 text-xs text-gray-600"  
+                className="w-full py-1 px-3 rounded-[50.00px] bg-pink-50 border border-pink-100 focus:outline-none focus:ring-2 focus:ring-pink-200 text-xs text-gray-600"
                 required
               />
-            </div> 
+            </div>
 
             <div>
               <label className="block text-xs font-medium text-gray-600 mb-1">
@@ -518,7 +518,7 @@ function App() {
                   </button>
                 ))}
               </div>
-            </div>*/}
+            </div>
 
             <div>
               <label className="block text-xs font-medium text-gray-600 mb-1">
@@ -531,7 +531,7 @@ function App() {
                 }
                 className="w-full py-3 px-3 rounded-[20.00px] bg-pink-50 border border-pink-100 focus:outline-none focus:ring-2 focus:ring-pink-200 text-xs text-gray-600 h-15 resize-none"
               />
-            </div>
+            </div>*/}
 
             <button
               type="submit"
