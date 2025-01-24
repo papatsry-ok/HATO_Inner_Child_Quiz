@@ -120,7 +120,6 @@ function App() {
   });
 
   useEffect(() => {
-    // Disable pull-to-refresh on touch devices
     const preventPullToRefresh = (e: TouchEvent) => {
       if (e.touches.length > 1 || window.scrollY === 0) {
         e.preventDefault();
@@ -129,7 +128,6 @@ function App() {
 
     document.addEventListener("touchmove", preventPullToRefresh, { passive: false });
 
-    // Cleanup on component unmount
     return () => {
       document.removeEventListener("touchmove", preventPullToRefresh);
     };
