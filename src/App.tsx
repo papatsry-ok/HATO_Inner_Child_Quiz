@@ -497,7 +497,7 @@ function App() {
                 className="w-full py-1 px-3 rounded-[50.00px] bg-pink-50 border border-pink-100 focus:outline-none focus:ring-2 focus:ring-pink-200 text-xs text-gray-600"  
                 required
               />
-            </div> */}
+            </div> 
 
             <div>
               <label className="block text-xs font-medium text-gray-600 mb-1">
@@ -519,7 +519,7 @@ function App() {
                   </button>
                 ))}
               </div>
-            </div>
+            </div>*/}
 
             <div>
               <label className="block text-xs font-medium text-gray-600 mb-1">
