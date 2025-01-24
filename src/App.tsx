@@ -431,7 +431,7 @@ function App() {
   if (showStart) {
     return (
       <div
-        className="min-h-screen bg-cover bg-center flex flex-col justify-between"
+        className="w-[375px] h-[667px] bg-cover bg-center flex flex-col justify-between"
         style={{ backgroundImage: `url(${home})` }}
       >
         <div></div>
@@ -463,7 +463,7 @@ function App() {
   if (showPersonalInfo) {
     return (
       <div
-        className="min-h-screen bg-cover bg-center p-4 flex items-center pt-[40vh]"
+        className="w-[375px] h-[667px] bg-cover bg-center p-4 flex items-center pt-[40vh]"
         style={{
           backgroundImage: `url(${info})`,
         }}
@@ -550,7 +550,7 @@ function App() {
 
     return (
       <div
-        className="min-h-screen bg-cover bg-center p-4"
+        className="w-[375px] h-[667px] bg-cover bg-center p-4"
         style={{
           backgroundImage: `url(${topCharacter.img})`,
         }}
@@ -632,7 +632,7 @@ function App() {
 
   return (
     <div
-      className="min-h-screen bg-cover bg-center p-4"
+      className="w-[375px] h-[667px] bg-cover bg-center p-4"
       style={{
         backgroundImage: `url(${questions[currentQuestion].image})`,
       }}
